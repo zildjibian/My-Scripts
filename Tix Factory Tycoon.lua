@@ -1,3 +1,5 @@
+--pls no ban me
+
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Maxgat5/UiLib/main/lua')))()
 
 local TweenService=game:GetService("TweenService")

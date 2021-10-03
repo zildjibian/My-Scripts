@@ -34,6 +34,7 @@ local main=library:CreateWindow("Tix Factory Tycoon")
 local AutoStuff=main:CreateFolder("Auto Stuff")
 local Others=main:CreateFolder("Others")
 
+
 ------------------------------Auto Stuff Tab
 AutoStuff:Toggle("Auto Buy Button", function(bool)
     AutoBuyButtons=bool
@@ -54,6 +55,7 @@ end)
 AutoStuff:Toggle("Collect Event Tix", function(bool)
     CollectEventTix=bool
 end)
+
 
 ------------------------------Others Tab
 Others:Button("Rejoin", function()

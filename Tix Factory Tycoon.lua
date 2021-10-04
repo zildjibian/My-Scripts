@@ -1,11 +1,49 @@
---pls no ban me
+--i got banned 😭😭😭
 
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Maxgat5/UiLib/main/lua')))()
 
+local Players=game:GetService("Players")
 local TweenService=game:GetService("TweenService")
+local TeleportService=game:GetService("TeleportService")
 
 local Factories=game:GetService("Workspace")["Fros Studio's Tycoon Kit"].Factories
-local localPlayer=game:GetService("Players").LocalPlayer
+local localPlayer=Players.LocalPlayer
+
+function GetPlayerReborn(plr)
+    if plr then
+        return plr.Character.PlayerOverhead.RebornName.Text:gsub("Reborn ",""):sub(1,1)
+    else
+        return localPlayer.Character.PlayerOverhead.RebornName.Text:gsub("Reborn ",""):sub(1,1)
+    end
+end
+
+function ChangeChams(enable)
+    for _,plr in pairs(Players:GetChildren()) do
+        if plr~=localPlayer then
+            for _,v in pairs(plr.Character:GetChildren()) do
+                if enable then
+                    if char:IsA("BasePart") then
+                        if not char:FindFirstChild("CHAMS") then
+                            local chams=Instance.new("BoxHandleAdornment", char)
+                            chams.Name='CHAMS'
+                            chams.Parent=char
+                            chams.Adornee=char
+                            chams.Size=chas.Size
+                            chams.ZIndex=10
+                            chams.AlwaysOnTop=true
+                        end
+                    end
+                else
+                    if char:IsA("BasePart") then
+                        if char:FindFirstChild("CHAMS") then
+                            char.CHAMS:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
 
 local Ores={
     "Gold";
@@ -32,9 +70,14 @@ for _,factory in pairs(Factories:GetChildren()) do
     end
 end
 
+if not myFactory then
+	return print("Please Load The Tycoon First!")
+end
+
 local main=library:CreateWindow("Tix Factory Tycoon")
 local AutoStuff=main:CreateFolder("Auto Stuff")
 local Others=main:CreateFolder("Others")
+local Credits=main:CreateFolder("Credits")
 
 
 ------------------------------Auto Stuff Tab
@@ -60,16 +103,20 @@ end)
 
 
 ------------------------------Others Tab
+Others:Toggle("Chams", function(bool)
+    Chams=bool
+end)
+
 Others:Button("Rejoin", function()
-    game:GetService("TeleportService"):Teleport(game.PlaceId, localPlayer)
+    TeleportService:Teleport(game.PlaceId, localPlayer)
 end)
 
 Others:Box("WalkSpeed","number",function(value)
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+	localPlayer.Character.Humanoid.WalkSpeed = value
 end)
 
 Others:Box("JumpPower","number",function(value)
-	game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+	localPlayer.Character.Humanoid.JumpPower = value
 end)
 
 Others:Dropdown("Teleports", Teleports, true, function(v)
@@ -111,7 +158,48 @@ Others:Button("Teleport", function()
 end)
 
 
+------------------------------Credits
+Credits:Button("Library Maker ("..game:service("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Maxgat5/Decode/main/JSON")).username..")",function()
+	setclipboard(game:service("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Maxgat5/Decode/main/JSON")).username)
+end)
+
+Credits:Button("Library Discord Server",function()
+	setclipboard(game:service("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Maxgat5/Decode/main/JSON")).discord)
+end)
+
+
 ------------------------------Script
+spawn(function()
+    while wait() do
+        for _,plr in pairs(Players:GetChildren()) do
+            if plr~=localPlayer then
+                for _,char in pairs(plr.Character:GetChildren()) do
+                    if enable then
+                        if char:IsA("BasePart") then
+                            if not char:FindFirstChild("CHAMS") then
+                                local chams=Instance.new("BoxHandleAdornment", char)
+                                chams.Name='CHAMS'
+                                chams.Parent=char
+                                chams.Adornee=char
+                                chams.Size=chas.Size
+                                chams.ZIndex=10
+                                chams.AlwaysOnTop=true
+                            end
+                        end
+                    else
+                        if char:IsA("BasePart") then
+                            if char:FindFirstChild("CHAMS") then
+                                char.CHAMS:Destroy()
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+
 spawn(function()
     while wait() do
         local Events=workspace.Game.Events
@@ -119,7 +207,7 @@ spawn(function()
         for _,v in pairs(Events.Default:GetChildren()) do
             if v.Name~="AAN" then
                 for _,tix in pairs(v:GetDescendants()) do
-                    if tix:FindFirstChild("TouchInterest") and tix.Name=='tixx' or tix.Name=='Touchy' or tix.Name=='Volcano' then
+                    if tix:FindFirstChild("TouchInterest") then
                         if CollectEventTix then
                             TweenService:Create(localPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame=tix.CFrame}):Play()
                             wait()
@@ -132,7 +220,7 @@ spawn(function()
         for _,v in pairs(Events.Madness:GetChildren()) do
             if v.Name~="AAN" then
                 for _,tix in pairs(v:GetDescendants()) do
-                    if tix:IsA("BasePart") and tix:FindFirstChild("TouchInterest") and tix.Name=='tixx' or tix.Name=='Touchy' then
+                    if tix:FindFirstChild("TouchInterest") then
                         if CollectEventTix then
                             TweenService:Create(localPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame=tix.CFrame}):Play()
                             wait()
@@ -145,7 +233,7 @@ spawn(function()
         for _,v in pairs(Events.Special:GetChildren()) do
             if v.Name~="AAN" then
                 for _,tix in pairs(v:GetDescendants()) do
-                    if tix:IsA("BasePart") and tix:FindFirstChild("TouchInterest") and tix.Name=='tixx' or tix.Name=='Touchy' then
+                    if tix:FindFirstChild("TouchInterest") then
                         if CollectEventTix then
                             TweenService:Create(localPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame=tix.CFrame}):Play()
                             wait()
@@ -217,8 +305,15 @@ spawn(function()
                 if AutoBuyButtons then
                     if realButton:IsA("BasePart") then
                         if realButton.Transparency<=.99 then
-                            TweenService:Create(localPlayer.Character.HumanoidRootPart, TweenInfo.new(.25), {CFrame=realButton.CFrame}):Play()
-                            wait(.25)
+                            if realButton.Parent:FindFirstChild("Reborn") then
+                                if tonumber(GetPlayerReborn())>=realButton.Parent.Reborn.Value then
+                                    TweenService:Create(localPlayer.Character.HumanoidRootPart, TweenInfo.new(.25), {CFrame=realButton.CFrame}):Play()
+                                    wait(.25)
+                                end
+                            else
+                                TweenService:Create(localPlayer.Character.HumanoidRootPart, TweenInfo.new(.25), {CFrame=realButton.CFrame}):Play()
+                                wait(.25)
+                            end
                         end
                     end
                 end

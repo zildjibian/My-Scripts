@@ -28,7 +28,7 @@ function ChangeChams(enable)
                             chams.Name='CHAMS'
                             chams.Parent=char
                             chams.Adornee=char
-                            chams.Size=chas.Size
+                            chams.Size=char.Size
                             chams.ZIndex=10
                             chams.AlwaysOnTop=true
                         end

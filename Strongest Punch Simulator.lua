@@ -1,18 +1,3 @@
---library Functions: CreateWindow(NAME)
-
---CreateWindow Functions: CreateFolder(NAME)
-
---[[CreateFolder Functions:
-
-    Toggle(NAME, callback(bool))
-
-    Dropdown(NAME, table, idk(bool), callback(value))
-
-    Box(NAME, type("string", "number"), callback(string/number))
-    
-    Button(NAME, callback())
-]]
-
 --//VARIABLES//--
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Maxgat5/UiLib/main/lua')))()
 

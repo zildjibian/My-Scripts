@@ -1,4 +1,4 @@
---i got banned 😭😭😭
+--i got banned 👍
 
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Maxgat5/UiLib/main/lua')))()
 

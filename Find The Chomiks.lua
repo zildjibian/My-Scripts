@@ -38,13 +38,13 @@ shared.config={
 }
 
 function LightMeUp()
-    if not shared.lplr.Character.HumanoidRootPart:FindFirstChild('Lighter') then
-        local a=Instance.new('PointLight', shared.lplr.Character.HumanoidRootPart)
-        a.Name='Lighter'
-        a.Range=shared.config.lightMeUp.range
-        a.Brightness=shared.config.lightMeUp.brightness
+    if shared.lplr.Character.HumanoidRootPart:FindFirstChild('Lighter') then
+	shared.lplr.Character.HumanoidRootPart.Lighter:Destroy()
     else
-       shared.lplr.Character.HumanoidRootPart.Lighter:Destroy() 
+	local a=Instance.new('PointLight', shared.lplr.Character.HumanoidRootPart)
+	a.Name='Lighter'
+	a.Range=shared.config.lightMeUp.range
+	a.Brightness=shared.config.lightMeUp.brightness
     end
 end
 
@@ -59,7 +59,7 @@ function ToggleControlToRun()
 			Enum.EasingStyle.Quart
 		)
 		
-        UIS.InputBegan:Connect(function(key, gpe)
+       		UIS.InputBegan:Connect(function(key, gpe)
 			if shared.controlToRun then
 				if not gpe and key.KeyCode==Enum.KeyCode.LeftControl then
 					TS:Create(workspace.CurrentCamera, TweenInfo, {FieldOfView=shared.config.controlToRun.runFOV}):Play()

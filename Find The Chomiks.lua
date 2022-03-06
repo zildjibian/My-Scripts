@@ -132,3 +132,13 @@ function ToggleESPAllChomik()
         end
     end
 end
+
+function CollectALLChomiks()
+	for _,v in pairs(workspace.chomiki:GetChildren()) do
+		if v:IsA('BasePart') and v.Name~='youareachomik' then
+			firetouchinterest(shared.lplr.Character.HumanoidRootPart, v)
+			game:GetService('RunService').RenderStepped:Wait()
+		end
+	end
+	firetouchinterest(shared.lplr.Character.HumanoidRootPart, workspace.chomiki.youareachomik)
+end

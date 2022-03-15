@@ -200,12 +200,21 @@ function ToggleESPAll()
     end
 end
 
-function CollectALL() --ONLY WORKS IN Find the Chomiks!
-	for _,v in pairs(workspace[abc]:GetChildren()) do
-		if v:IsA('BasePart') and v.Name~='youareachomik' then
-			firetouchinterest(shared.lplr.Character.HumanoidRootPart, v)
-			game:GetService('RunService').RenderStepped:Wait()
-		end
-	end
-	firetouchinterest(shared.lplr.Character.HumanoidRootPart, workspace.chomiki.youareachomik)
+function CollectALL()
+    if abc.Name=='chomiki' then
+        for _,v in pairs(abc:GetChildren()) do
+            if v:IsA('BasePart') and v.Name~='youareachomik' then
+                firetouchinterest(shared.lplr.Character.HumanoidRootPart, v)
+                game:GetService('RunService').RenderStepped:Wait()
+            end
+        end
+        firetouchinterest(shared.lplr.Character.HumanoidRootPart, workspace.chomiki.youareachomik) 
+    else
+        for _,v in pairs(abc:GetChildren()) do
+            if v:IsA('BasePart') then
+                firetouchinterest(shared.lplr.Character.HumanoidRootPart, v)
+                game:GetService('RunService').RenderStepped:Wait()
+            end
+        end
+    end
 end

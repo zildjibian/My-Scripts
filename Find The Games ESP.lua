@@ -4,6 +4,7 @@ Current Games Supported:
 - Find the Cones
 - Find the Stickmen
 - find the reggies
+- Find The Doggos!
 
 TODO:
 - Find the little guys (7370903084)
@@ -26,6 +27,8 @@ elseif game.PlaceId==8376378000 then
     abc=workspace.Stickmen
 elseif game.PlaceId==7967866040 then
     abc=workspace['Badges (Reggies)']
+elseif game.PlaceId==7923028699 then
+    abc=workspace.Doggos
 else
     abc=workspace.chomiki
 end
@@ -138,6 +141,8 @@ function ToggleESPAll()
         elseif game.PlaceId==8376378000 then
             a.Text=ins.Name
         elseif game.PlaceId==7967866040 then
+            a.Text=ins.Name
+        elseif game.PlaceId==7923028699 then
             a.Text=ins.Name
         else
             if bb.Parent:FindFirstChild('ChomikName') then

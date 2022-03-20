@@ -5,10 +5,10 @@ Current Games Supported:
 - Find the Stickmen
 - find the reggies
 - Find The Doggos!
+- find the ducks
 
 TODO:
 - Find the little guys (7370903084)
-- find the ducks (7932407199)
 - Find the Markers (7896264844)
 ]]
 
@@ -29,6 +29,8 @@ elseif game.PlaceId==7967866040 then
     abc=workspace['Badges (Reggies)']
 elseif game.PlaceId==7923028699 then
     abc=workspace.Doggos
+elseif game.PlaceId==7932407199 then
+    abc=workspace.badgeGivers
 else
     abc=workspace.chomiki
 end
@@ -136,20 +138,10 @@ function ToggleESPAll()
         bb.Name='ChaChaCha'
         local a=Instance.new('TextLabel',bb)
         
-        if game.PlaceId==8414695951 then
-            a.Text=ins.Name
-        elseif game.PlaceId==8376378000 then
-            a.Text=ins.Name
-        elseif game.PlaceId==7967866040 then
-            a.Text=ins.Name
-        elseif game.PlaceId==7923028699 then
-            a.Text=ins.Name
+        if bb.Parent:FindFirstChild('ChomikName') then
+            a.Text=bb.Parent.ChomikName.Value
         else
-            if bb.Parent:FindFirstChild('ChomikName') then
-                a.Text=bb.Parent.ChomikName.Value
-            else
-                a.Text=ins.Parent.Name
-            end
+            a.Text=ins.Name
         end
         
         a.Size=UDim2.new(1,0,1,0)

@@ -20,19 +20,11 @@ if shared.loaded==nil then
 end
 
 local abc
-    
-if game.PlaceId==8414695951 then
-    abc=workspace.badges
-elseif game.PlaceId==8376378000 then
-    abc=workspace.Stickmen
-elseif game.PlaceId==7967866040 then
-    abc=workspace['Badges (Reggies)']
-elseif game.PlaceId==7923028699 then
-    abc=workspace.Doggos
-elseif game.PlaceId==7932407199 then
-    abc=workspace.badgeGivers
+
+if false then
+    -- do thing
 else
-    abc=workspace.chomiki
+    abc=workspace:FindFirstChild('chomiki') or workspace:FindFirstChild('badgeGivers') or workspace:FindFirstChild('Doggos') or workspace:FindFirstChild('Badges (Reggies)') or workspace:FindFirstChild('Stickmen') or workspace:FindFirstChild('badges')
 end
 
 shared.lplr=game:GetService('Players').LocalPlayer

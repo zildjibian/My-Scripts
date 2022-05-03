@@ -6,10 +6,6 @@ Current Games Supported:
 - find the reggies
 - Find The Doggos!
 - find the ducks
-
-TODO:
-- Find the little guys (7370903084)
-- Find the Markers (7896264844)
 ]]
 
 if shared.loaded==nil then
